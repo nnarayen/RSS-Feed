@@ -134,6 +134,7 @@
   			
   			var postDiv = document.getElementById('post_text');
   			$(postDiv).empty();
+  			$(postDiv).append('<h3>' + $(this).attr('title') + '</h3>');
   			$(postDiv).append($(this).attr('content'));
   			window.scroll(0,0);
   		});
@@ -200,6 +201,7 @@
   					$(postDiv).attr('style', 'float:left; padding-bottom:10px; cursor:pointer; cursor:hand');
   					$(postDiv).addClass('post');
   					$(postDiv).attr('content', entry.content);
+  					$(postDiv).attr('title', entry.title);
   					
   					$(imageDiv).attr('style', 'float:left; border-style:solid; border-width:2px; height=130px; width=130px');
   					$(textDiv).attr('style', 'float:left; padding-left:10px;');
