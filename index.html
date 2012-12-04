@@ -8,10 +8,10 @@
   		google.load('feeds','1');
   		var currentPage = 'techcrunch';
   		
-  		$('#techcrunch').live('click',function() {
+  		function loadDifferentPage(url, page) {
   			var container = document.getElementById('feed');
   			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/TechCrunch/');
+  			var feed = new google.feeds.Feed(url);
   			feed.setNumEntries(20);
   			feed.load(function(result) {
   				if (!result.error) {
@@ -19,113 +19,40 @@
   				}
   			});
   			$('#' + currentPage).removeClass('active');
-  			$('#techcrunch').addClass('active');
-  			currentPage = 'techcrunch';
+  			$('#' + page).addClass('active');
+  			currentPage = page;
+  		}
+  		
+  		$('#techcrunch').live('click',function() {
+  			loadDifferentPage('http://feeds.feedburner.com/TechCrunch/', 'techcrunch');
   		});
   		
   		$('#startups').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/TechCrunch/startups');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#startups').addClass('active');
-  			currentPage = 'startups';
+  			loadDifferentPage('http://feeds.feedburner.com/TechCrunch/startups', 'startups');
   		});
   		
   		$('#fundings').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/TechCrunch/fundings-exits');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#fundings').addClass('active');
-  			currentPage = 'fundings';
+  			loadDifferentPage('http://feeds.feedburner.com/TechCrunch/fundings-exits', 'fundings');
   		});
   		
   		$('#social').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/TechCrunch/social');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#social').addClass('active');
-  			currentPage = 'social';
+  			loadDifferentPage('http://feeds.feedburner.com/TechCrunch/social', 'social');
   		});
   		
   		$('#mobile').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/Mobilecrunch');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#mobile').addClass('active');
-  			currentPage = 'mobile';
+  			loadDifferentPage('http://feeds.feedburner.com/Mobilecrunch', 'mobile');
   		});
   		
   		$('#gadgets').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/crunchgear');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#gadgets').addClass('active');
-  			currentPage = 'gadgets';
+  			loadDifferentPage('http://feeds.feedburner.com/crunchgear', 'gadgets');
   		});
   		
   		$('#gaming').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/TechCrunch/gaming');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#gaming').addClass('active');
-  			currentPage = 'gaming';
+  			loadDifferentPage('http://feeds.feedburner.com/TechCrunch/gaming', 'gaming');
   		});
   		
   		$('#enterprise').live('click',function() {
-  			var container = document.getElementById('feed');
-  			$(container).empty();
-  			var feed = new google.feeds.Feed('http://feeds.feedburner.com/TechCrunchIT');
-  			feed.setNumEntries(20);
-  			feed.load(function(result) {
-  				if (!result.error) {
-  					createFeedList(result);
-  				}
-  			});
-  			$('#' + currentPage).removeClass('active');
-  			$('#enterprise').addClass('active');
-  			currentPage = 'enterprise';
+  			loadDifferentPage('http://feeds.feedburner.com/TechCrunchIT', 'enterprise');
   		});
   		
   		$('.post').live('click',function() {
